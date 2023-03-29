@@ -1,1 +1,29 @@
 @use '../abstracts' as *;
+
+.site-footer {
+    background: $grey;
+    color: $white;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .footer-navigation {
+        padding: 32px;
+        border-bottom: 1px solid $white;
+    }
+
+    .menu-item a {
+        color: $primary-2;
+    }
+
+    .site-info {
+        display: flex;
+        justify-content: center;
+        padding-top: 48px;
+
+        p {
+            margin: 0;
+        }
+    }
+}

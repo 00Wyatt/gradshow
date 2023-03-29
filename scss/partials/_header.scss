@@ -1,0 +1,8 @@
+@use '../abstracts' as *;
+
+.site-header {
+    background: $primary;
+    color: $black;
+    display: flex;
+    justify-content: space-between;
+}

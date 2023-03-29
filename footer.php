@@ -13,6 +13,16 @@
 ?>
 
 <footer id="colophon" class="site-footer">
+  <nav id="site-navigation" class="footer-navigation">
+    <?php
+    wp_nav_menu(
+      array(
+        'theme_location' => 'menu-1',
+        'menu_id'        => 'primary-menu',
+      )
+    );
+    ?>
+  </nav><!-- #site-navigation -->
   <div class="site-info">
     <p>Grad Show 2023 © All Rights Reserved</p>
   </div><!-- .site-info -->
