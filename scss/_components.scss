@@ -1,36 +1,153 @@
 @use './abstracts' as *;
 
 .menu {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 24px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 24px;
 
-    .menu-item {
-        list-style: none;
+  .menu-item {
+    list-style: none;
 
-        a {
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 24px;
-            line-height: 32px;
-            padding: 8px;
-            position: relative;
-    
-            &::after {
-                content: "";
-                position: absolute;
-                height: 2px;
-                width: 0;
-                left: 0;
-                bottom: 0;
-                background: $white;
-                transition: 250ms ease-in-out;
-            }
-    
-            &:hover::after {
-                width: 100%;
-            }
-        }
+    a {
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 8px 4px;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 0;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%) scaleX(0);
+        transition: 250ms ease-in-out;
+      }
+
+      &:hover::after {
+        transform: translateX(-50%) scaleX(1);
+        width: 100%;
+      }
     }
+  }
+}
+
+.entry-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 56px 0;
+  border-bottom: 1px solid $grey;
+
+  h1,
+  h2 {
+    margin: 0;
+    font-size: $step-8;
+  }
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: $step-1;
+  font-weight: 600;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+%btn-outline {
+  background: transparent;
+  color: $black;
+  border: 4px solid $black;
+
+  &:hover {
+    background: $black;
+  }
+}
+
+.btn-outline-primary {
+  @extend %btn-outline;
+
+  &:hover {
+    color: $primary-1;
+  }
+}
+
+.btn-outline-white {
+  @extend %btn-outline;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.developers-cards {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+
+  .card {
+    position: relative;
+    height: 376px;
+    background: $primary-gradient;
+    padding: 8px;
+    border-radius: 8px;
+    flex: 0 1 264px;
+    display: flex;
+    box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    overflow: hidden;
+
+    &:hover {
+      .card-overlay {
+        opacity: 0.2;
+      }
+      .developer-name {
+        transform: translateY(0);
+      }
+    }
+    .card-overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #000000;
+      opacity: 0;
+      border-radius: 8px;
+      transition: opacity 200ms ease-in-out;
+    }
+
+    .developer-name {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      padding: 8px 16px;
+      border-radius: 0 0 8px 8px;
+      background: $primary-gradient;
+      display: flex;
+      justify-content: center;
+      transform: translateY(100%);
+      transition: transform 200ms ease-in-out;
+
+      p {
+        font-size: $step-2;
+        font-weight: 600;
+      }
+    }
+
+    img {
+      background: $neutral-50;
+      border-radius: 8px;
+    }
+  }
 }

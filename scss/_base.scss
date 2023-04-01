@@ -1,7 +1,12 @@
 @use './abstracts' as *;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: $white;
+  color: $black;
 }
 
 h1,
@@ -9,7 +14,49 @@ h2,
 h3,
 h4 {
   font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  margin: 0;
 }
+
 p {
   font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: $black;
+  transition: all 200ms ease-in-out;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: $black;
+}
+
+a:active {
+  opacity: 0.75;
+}
+
+.container {
+  display: flex;
+  padding: 0 16px;
+
+  @include breakpoint(medium) {
+    padding: 0 24px;
+  }
+
+  @include breakpoint(large) {
+    padding: 0 48px;
+  }
+
+  @include breakpoint(xlarge) {
+    padding: 0 72px;
+  }
+
+  @include breakpoint(xxlarge) {
+    padding: 0 96px;
+  }
 }

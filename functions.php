@@ -172,3 +172,14 @@ require get_template_directory() . '/inc/customizer.php';
 if (defined('JETPACK__VERSION')) {
   require get_template_directory() . '/inc/jetpack.php';
 }
+
+/**
+ * Reverse the order of the posts on the home page.
+ */
+function reverse_post_order($query)
+{
+  if (is_home() && $query->is_main_query()) {
+    $query->set('order', 'ASC');
+  }
+}
+add_action('pre_get_posts', 'reverse_post_order');

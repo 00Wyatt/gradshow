@@ -1,8 +1,54 @@
 @use '../abstracts' as *;
 
 .site-header {
-    background: $primary;
-    color: $black;
-    display: flex;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: $primary-gradient;
+  color: $black;
+  padding: 8px 0;
+  z-index: 1;
+
+  .container {
     justify-content: space-between;
+  }
+
+  .site-branding {
+    a {
+      display: flex;
+    }
+  }
+
+  .site-title {
+    display: none;
+  }
+
+  .menu-toggle,
+  .main-navigation.toggled ul {
+    display: block;
+  }
+
+  @include breakpoint(large) {
+    .menu-toggle {
+      display: none;
+    }
+
+    .main-navigation ul {
+      display: flex;
+    }
+  }
+
+  .main-navigation {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu-item a {
+    color: $black;
+    font-size: $step-1;
+
+    &::after {
+      background: $black;
+    }
+  }
 }

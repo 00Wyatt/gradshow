@@ -12,44 +12,64 @@
  *
  * @package GradShow
  */
-
 get_header();
 ?>
 
 <main id="primary" class="site-main">
+  <div class="main-hero">
+    <div class="hero-text">
+      <h1>Grad Show</h1>
+    </div>
+  </div>
 
-  <?php
-  if (have_posts()) :
+  <header id="masthead" class="site-header">
+    <div class="container">
+      <div class="site-branding">
+        <?php
+        the_custom_logo();
+        ?>
+        <p aria-hidden="visible" class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
+        <a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/svgs/logo.svg" alt="Grad Show logo"></a>
+      </div><!-- .site-branding -->
 
-    if (is_home() && !is_front_page()) :
-  ?>
-      <header>
-        <h1 class="page-title screen-reader-text my-title"><?php single_post_title(); ?></h1>
-      </header>
-  <?php
+      <nav id="site-navigation" class="main-navigation">
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Menu', 'gradshow'); ?></button>
+        <?php
+        wp_nav_menu(
+          array(
+            'theme_location' => 'menu-1',
+            'menu_id'        => 'primary-menu',
+          )
+        );
+        ?>
+      </nav><!-- #site-navigation -->
+    </div><!-- .container -->
+  </header><!-- #masthead -->
+
+  <div id="projects" class="entry-header">
+    <h2>Projects</h2>
+  </div>
+
+  <section class="projects">
+    <?php
+    if (have_posts()) :
+      while (have_posts()) :
+        the_post();
+    ?>
+        <article id="post-<?php the_ID(); ?>" class="project-card">
+          <div class="project-overlay"></div>
+          <div class="project-name">
+            <?php
+            the_title('<h3><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h3>');
+            ?>
+          </div>
+          <img src="https://placehold.co/680x509?text=Placeholder" alt="Placeholder image">
+        </article><!-- #post-<?php the_ID(); ?> -->
+    <?php
+      endwhile; // End of the loop.
     endif;
-
-    /* Start the Loop */
-    while (have_posts()) :
-      the_post();
-
-      /*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-      get_template_part('template-parts/content', get_post_type());
-
-    endwhile;
-
-    the_posts_navigation();
-
-  else :
-
-    get_template_part('template-parts/content', 'none');
-
-  endif;
-  ?>
+    ?>
+  </section>
 
 </main><!-- #main -->
 

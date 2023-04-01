@@ -1,0 +1,104 @@
+@use '../abstracts' as *;
+
+.about {
+  .about-content {
+    padding: 64px 0;
+
+    @include breakpoint(medium) {
+      padding: 96px 0;
+    }
+
+    .container {
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .text-column {
+      flex: 1 1 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .text-box {
+      max-width: 648px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      h2 {
+        font-size: $step-6;
+      }
+
+      p {
+        font-size: $step-1;
+      }
+    }
+
+    .image-column {
+      flex: 1 1 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.25);
+      }
+    }
+  }
+
+  .diplomas-content {
+    padding-bottom: 32px;
+
+    @include breakpoint(medium) {
+      padding-bottom: 80px;
+    }
+
+    .container {
+      flex-direction: column;
+    }
+    .heading {
+      display: flex;
+      justify-content: center;
+      padding: 24px 0;
+
+      @include breakpoint(medium) {
+        padding: 64px 0;
+      }
+
+      h2 {
+        font-size: $step-6;
+      }
+    }
+
+    .diplomas-cards {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+
+      .card {
+        background: $primary-gradient;
+        max-width: 464px;
+        padding: 16px;
+        border-radius: 8px;
+        flex: 1 1 320px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: start;
+        gap: 16px;
+        box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.2);
+
+        h3 {
+          font-size: $step-2;
+        }
+
+        p {
+          font-size: $step-1;
+        }
+      }
+    }
+  }
+}
