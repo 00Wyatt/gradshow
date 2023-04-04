@@ -1,6 +1,20 @@
 @use '../abstracts' as *;
 
 .developers {
+  .developers-header {
+    position: relative;
+
+    .lines-top {
+      top: 5%;
+      width: 26%;
+    }
+
+    .lines-bottom {
+      bottom: 0;
+      width: 30%;
+    }
+  }
+
   .developers-content {
     padding: 32px 0;
   }

@@ -1,5 +1,7 @@
 @use './abstracts' as *;
 
+////// WordPress Components //////
+
 .menu {
   margin: 0;
   padding: 0;
@@ -10,11 +12,10 @@
     list-style: none;
 
     a {
-      text-decoration: none;
-      font-weight: 600;
-      text-transform: uppercase;
-      padding: 8px 4px;
       position: relative;
+      padding: 8px 4px;
+      font-weight: 600;
+      text-decoration: none;
 
       &::after {
         content: '';
@@ -28,33 +29,64 @@
       }
 
       &:hover::after {
-        transform: translateX(-50%) scaleX(1);
         width: 100%;
+        transform: translateX(-50%) scaleX(1);
       }
     }
   }
 }
 
 .entry-header {
+  background: $white;
+  padding: 56px 0;
+  border-bottom: 1px solid $grey;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 56px 0;
-  border-bottom: 1px solid $grey;
 
   h1,
   h2 {
-    margin: 0;
     font-size: $step-8;
   }
 }
 
+.error-404 {
+  min-height: 100vh;
+
+  .container {
+    flex-direction: column;
+  }
+
+  .page-header,
+  .page-content {
+    padding: 32px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include breakpoint(medium) {
+      padding: 64px 0;
+    }
+  }
+
+  h1 {
+    font-size: $step-4;
+  }
+
+  p {
+    font-size: $step-1;
+  }
+}
+
+//////// Buttons ////////
+
 .btn {
   padding: 8px 16px;
-  border-radius: 8px;
+  border-radius: $rounded;
   font-size: $step-1;
   font-weight: 600;
-  transition: all 200ms ease-in-out;
+  transition: all $delay-sm ease-in-out;
   cursor: pointer;
 
   &:active {
@@ -88,56 +120,120 @@
   }
 }
 
-.developers-cards {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
+//////// Cards ////////
 
-  .card {
+.project-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+
+  @include breakpoint(medium) {
+    gap: 64px;
+  }
+
+  .project-card {
     position: relative;
-    height: 376px;
+    width: 100%;
+    max-width: 704px;
+    border-radius: $rounded;
+    flex: 1 1 544px;
+    display: flex;
+    box-shadow: $shadow-md;
+    cursor: pointer;
+    overflow: hidden;
+
+    &:hover .project-overlay {
+      opacity: 0.2;
+    }
+  }
+
+  .project-overlay {
+    background: #000000;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: $rounded;
+    opacity: 0;
+    transition: opacity $delay-sm ease-in-out;
+  }
+
+  .project-name {
+    background: $primary-gradient;
+    position: absolute;
+    right: 0px;
+    bottom: 24px;
+    padding: 8px 16px;
+    border-radius: $rounded 0px 0px $rounded;
+    display: flex;
+
+    @include breakpoint(small) {
+      bottom: 32px;
+      padding: 16px 32px;
+    }
+
+    h3 {
+      font-size: $step-3;
+    }
+  }
+}
+
+.developer-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+
+  @include breakpoint(medium) {
+    gap: 24px;
+  }
+
+  .developer-card {
     background: $primary-gradient;
     padding: 8px;
-    border-radius: 8px;
+    position: relative;
+    border-radius: $rounded;
     flex: 0 1 264px;
     display: flex;
-    box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: $shadow-sm;
     cursor: pointer;
     overflow: hidden;
 
     &:hover {
-      .card-overlay {
+      .developer-overlay {
         opacity: 0.2;
       }
       .developer-name {
         transform: translateY(0);
       }
     }
-    .card-overlay {
+
+    .developer-overlay {
+      background: #000000;
+      position: absolute;
       width: 100%;
       height: 100%;
-      position: absolute;
       top: 0;
       left: 0;
-      background: #000000;
+      border-radius: $rounded;
       opacity: 0;
-      border-radius: 8px;
-      transition: opacity 200ms ease-in-out;
+      transition: opacity $delay-sm ease-in-out;
     }
 
     .developer-name {
+      background: $primary-gradient;
+      padding: 8px 16px;
       position: absolute;
       width: 100%;
       left: 0;
       bottom: 0;
-      padding: 8px 16px;
-      border-radius: 0 0 8px 8px;
-      background: $primary-gradient;
+      border-radius: 0 0 $rounded $rounded;
       display: flex;
       justify-content: center;
       transform: translateY(100%);
-      transition: transform 200ms ease-in-out;
+      transition: transform $delay-sm ease-in-out;
 
       p {
         font-size: $step-2;
@@ -147,7 +243,117 @@
 
     img {
       background: $neutral-50;
-      border-radius: 8px;
+      border-radius: $rounded;
     }
+  }
+}
+
+.diplomas-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+
+  .card {
+    background: $primary-gradient;
+    max-width: 464px;
+    padding: 16px;
+    border-radius: $rounded;
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap: 16px;
+    box-shadow: $shadow-sm;
+
+    h3 {
+      font-size: $step-2;
+    }
+
+    p {
+      font-size: $step-1;
+    }
+  }
+}
+
+//////// Layout ////////
+
+.text-column {
+  flex: 1 1 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-box {
+  max-width: 648px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 16px;
+
+  h2 {
+    font-size: $step-6;
+  }
+
+  p {
+    font-size: $step-1;
+  }
+}
+
+.image-column {
+  flex: 1 1 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//////// Design Elements ////////
+
+%header-element {
+  position: absolute;
+  width: 20%;
+
+  @include breakpoint(small) {
+    width: 18%;
+  }
+
+  @include breakpoint(medium) {
+    width: 15%;
+  }
+
+  @include breakpoint(large) {
+    width: 12%;
+  }
+
+  @include breakpoint(xlarge) {
+    width: 9%;
+  }
+}
+
+.header-top-right {
+  @extend %header-element;
+  top: 0;
+  right: 0;
+}
+
+.header-bottom-left {
+  @extend %header-element;
+  bottom: 0;
+  left: 0;
+}
+
+.title-wrapper {
+  position: relative;
+
+  .lines-top {
+    position: absolute;
+    right: 0;
+  }
+
+  .lines-bottom {
+    position: absolute;
+    left: 0;
   }
 }

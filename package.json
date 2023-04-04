@@ -9,11 +9,9 @@
     "Theme"
   ],
   "devDependencies": {
-    "dir-archiver": "^1.1.1",
     "sass": "^1.60.0"
   },
   "scripts": {
-    "sass": "npx sass --watch --style=compressed scss:dist",
-    "bundle": "dir-archiver --src . --dest ../_s.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map yarn.lock"
+    "sass": "npx sass --watch --style=compressed scss:dist"
   }
 }

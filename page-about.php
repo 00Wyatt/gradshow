@@ -23,8 +23,14 @@ get_header();
     the_post();
   ?>
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-      <header class="entry-header">
-        <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+      <header class="entry-header about-header">
+        <img class="header-top-right" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/about-top-right.svg" alt="">
+        <img class="header-bottom-left" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/about-bottom-left.svg" alt="">
+        <div class="title-wrapper">
+          <img class="lines-top" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/about-lines-top.svg" alt="">
+          <img class="lines-bottom" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/about-lines-bottom.svg" alt="">
+          <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+        </div>
       </header><!-- .entry-header -->
       <div class="about-content">
         <div class="container">

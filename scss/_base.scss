@@ -9,6 +9,15 @@ body {
   color: $black;
 }
 
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
+}
+
 h1,
 h2,
 h3,
@@ -19,21 +28,22 @@ h4 {
 }
 
 p {
-  font-family: 'Noto Sans', Helvetica, Arial, sans-serif;
   margin: 0;
 }
 
 a,
 a:visited,
 a:active {
-  text-decoration: none;
   color: $black;
-  transition: all 200ms ease-in-out;
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all $delay-sm ease-in-out;
 }
 
 a:hover {
-  text-decoration: underline;
   color: $black;
+  text-decoration: underline;
 }
 
 a:active {
@@ -59,4 +69,18 @@ a:active {
   @include breakpoint(xxlarge) {
     padding: 0 96px;
   }
+}
+
+.parallax {
+  /* The image used */
+  background-image: url('../assets/images/background2.png');
+
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

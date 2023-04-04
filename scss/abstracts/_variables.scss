@@ -1,25 +1,35 @@
+// Shadows:
+$shadow-sm: 0px 4px 10px 2px rgba(0, 0, 0, 0.2);
+$shadow-md: 0px 4px 10px 2px rgba(0, 0, 0, 0.25);
+
+// Border:
+$rounded: 8px;
+
+// Delay:
+$delay-sm: 200ms;
+
 // Colors:
 
 // Main
-$primary-1: hsl(48, 99%, 55%);
+$primary-1: hsl(48, 100%, 55%);
 $primary-2: hsl(42, 100%, 50%);
-$secondary-1: #31a1c9;
-$secondary-2: #2dd2c5;
-$secondary-3: #fb8485;
-$secondary-4: #f7c9d9;
+$secondary-1: hsl(196, 61%, 49%);
+$secondary-2: hsl(175, 65%, 50%);
+$secondary-3: hsl(359, 94%, 75%);
+$secondary-4: hsl(339, 74%, 88%);
 
 // Gradient
 $primary-gradient: linear-gradient(218.37deg, $primary-1 13%, $primary-2 86.5%);
 
 // Shade
-$white: #fffefa;
-$black: #0a0800;
-$grey: #282b34;
+$white: hsl(48, 100%, 99%);
+$black: hsl(48, 100%, 2%);
+$grey: hsl(225, 13%, 18%);
 
 // Neutral
-$neutral-50: #f3f3f2;
-$neutral-100: #e7e6e4;
-$neutral-200: #cfcdc9;
-$neutral-300: #b6b4af;
-$neutral-400: #9e9b94;
-$neutral-900: #1b1a18;
+$neutral-50: hsl(60, 4%, 95%);
+$neutral-100: hsl(40, 6%, 90%);
+$neutral-200: hsl(40, 6%, 80%);
+$neutral-300: hsl(43, 5%, 70%);
+$neutral-400: hsl(42, 5%, 60%);
+$neutral-900: hsl(40, 6%, 10%);

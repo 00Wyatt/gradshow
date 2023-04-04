@@ -14,10 +14,14 @@ use SilverStripe\Assets\Image;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-  <header class="entry-header">
-    <?php
-    the_title('<h1 class="entry-title">', '</h1>');
-    ?>
+  <header class="entry-header project-header">
+    <img class="header-top-right" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/project-info-top-right.svg" alt="">
+    <img class="header-bottom-left" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/project-info-bottom-left.svg" alt="">
+    <div class="title-wrapper">
+      <img class="lines-top" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/project-info-lines-top.svg" alt="">
+      <img class="lines-bottom" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/project-info-lines-bottom.svg" alt="">
+      <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+    </div>
   </header><!-- .entry-header -->
 
   <div class="entry-content project-content">
@@ -57,9 +61,9 @@ use SilverStripe\Assets\Image;
       <div class="heading">
         <h2>The Team</h2>
       </div>
-      <div class="developers-cards">
-        <div class="card">
-          <div class="card-overlay"></div>
+      <div class="developer-cards">
+        <div class="developer-card">
+          <div class="developer-overlay"></div>
           <div class="developer-name">
             <a href="#">
               <p>Your Name</p>
@@ -67,8 +71,8 @@ use SilverStripe\Assets\Image;
           </div>
           <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
         </div>
-        <div class="card">
-          <div class="card-overlay"></div>
+        <div class="developer-card">
+          <div class="developer-overlay"></div>
           <div class="developer-name">
             <a href="#">
               <p>Your Name</p>
@@ -76,8 +80,8 @@ use SilverStripe\Assets\Image;
           </div>
           <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
         </div>
-        <div class="card">
-          <div class="card-overlay"></div>
+        <div class="developer-card">
+          <div class="developer-overlay"></div>
           <div class="developer-name">
             <a href="#">
               <p>Your Name</p>
@@ -85,8 +89,8 @@ use SilverStripe\Assets\Image;
           </div>
           <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
         </div>
-        <div class="card">
-          <div class="card-overlay"></div>
+        <div class="developer-card">
+          <div class="developer-overlay"></div>
           <div class="developer-name">
             <a href="#">
               <p>Your Name</p>
