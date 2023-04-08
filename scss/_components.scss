@@ -36,6 +36,27 @@
   }
 }
 
+.menu-toggle {
+  background: transparent;
+  border: 2px solid $black;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: background-color $delay-sm ease-in-out;
+
+  &:hover {
+    background: rgb(0, 0, 0, 0.1);
+  }
+
+  img {
+    display: flex;
+  }
+}
+
+.toggled {
+  flex-direction: column;
+  text-align: end;
+}
+
 .entry-header {
   background: $white;
   padding: 56px 0;
@@ -140,11 +161,15 @@
     flex: 1 1 544px;
     display: flex;
     box-shadow: $shadow-md;
-    cursor: pointer;
     overflow: hidden;
 
     &:hover .project-overlay {
       opacity: 0.2;
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
     }
   }
 
@@ -174,6 +199,10 @@
       padding: 16px 32px;
     }
 
+    a:hover {
+      text-decoration: underline;
+    }
+
     h3 {
       font-size: $step-3;
     }
@@ -198,7 +227,6 @@
     flex: 0 1 264px;
     display: flex;
     box-shadow: $shadow-sm;
-    cursor: pointer;
     overflow: hidden;
 
     &:hover {
@@ -235,15 +263,22 @@
       transform: translateY(100%);
       transition: transform $delay-sm ease-in-out;
 
+      a:hover {
+        text-decoration: underline;
+      }
+
       p {
         font-size: $step-2;
         font-weight: 600;
+        text-align: center;
+        text-transform: uppercase;
       }
     }
 
     img {
       background: $neutral-50;
       border-radius: $rounded;
+      object-fit: cover;
     }
   }
 }

@@ -30,6 +30,10 @@ get_header();
         <p class="title-year">2023</p>
       </div>
     </div>
+    <div class="cta">
+      <a class="btn btn-outline-primary" href="<?php echo esc_url(home_url('/')); ?>#projects">Get Started</a>
+      <a href="<?php echo esc_url(home_url('/')); ?>#projects"><img class="down-arrow" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/arrow-down.svg" alt="" width="32"></a>
+    </div>
   </div>
 
   <header id="masthead" class="site-header">
@@ -41,9 +45,8 @@ get_header();
         <p aria-hidden="visible" class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
         <a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/svgs/logo.svg" alt="Grad Show logo"></a>
       </div><!-- .site-branding -->
-
       <nav id="site-navigation" class="main-navigation">
-        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Menu', 'gradshow'); ?></button>
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><img src="<?php echo get_template_directory_uri(); ?>/assets/svgs/list.svg" alt="" width="32"></button>
         <?php
         wp_nav_menu(
           array(
@@ -87,6 +90,31 @@ get_header();
           endwhile; // End of the loop.
         endif;
         ?>
+        <?php
+        $args = array(
+          'post_type' => 'project'
+        );
+        $loop = new WP_Query($args);
+        while ($loop->have_posts()) {
+          $loop->the_post();
+        ?>
+          <article id="post-<?php the_ID(); ?>" class="project-card">
+            <div class="project-overlay"></div>
+            <div class="project-name">
+              <?php
+              the_title('<h3><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h3>');
+              ?>
+            </div>
+            <?php if (has_post_thumbnail()) {
+              the_post_thumbnail();
+            } else { ?>
+              <img src="https://placehold.co/704x533?text=Placeholder" alt="Placeholder image">
+            <?php
+            } ?>
+          </article><!-- #post-<?php the_ID(); ?> -->
+        <?php
+        }
+        wp_reset_query(); ?>
       </div>
     </div>
   </section>

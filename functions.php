@@ -97,6 +97,82 @@ function gradshow_setup()
 add_action('after_setup_theme', 'gradshow_setup');
 
 /**
+ * Register custom post type for Projects.
+ */
+function custom_project_post_type()
+{
+  register_post_type(
+    'project',
+    array(
+      'labels'      => array(
+        'name'          => __('Projects', 'gradshow'),
+        'singular_name' => __('Project', 'gradshow'),
+      ),
+      'public'      => true,
+      'has_archive' => true,
+      'show_in_rest' => true,
+      'supports' => array('title', 'editor', 'custom-fields', 'thumbnail')
+    )
+  );
+}
+add_action('init', 'custom_project_post_type');
+
+/**
+ * Register custom post type for Developers.
+ */
+function custom_developer_post_type()
+{
+  register_post_type(
+    'developer',
+    array(
+      'labels'      => array(
+        'name'          => __('Developers', 'gradshow'),
+        'singular_name' => __('Developer', 'gradshow'),
+      ),
+      'public'      => true,
+      'has_archive' => true,
+      'show_in_rest' => true,
+      'supports' => array('title', 'editor', 'custom-fields', 'thumbnail'),
+      'taxonomies'  => array('category')
+    )
+  );
+}
+add_action('init', 'custom_developer_post_type');
+
+/**
+ * Register custom post type for Projects.
+ */
+function custom_diploma_post_type()
+{
+  register_post_type(
+    'diploma',
+    array(
+      'labels'      => array(
+        'name'          => __('Diplomas', 'gradshow'),
+        'singular_name' => __('Diploma', 'gradshow'),
+      ),
+      'public'      => true,
+      'has_archive' => true,
+      'show_in_rest' => true,
+      'supports' => array('title', 'editor', 'custom-fields', 'thumbnail')
+    )
+  );
+}
+add_action('init', 'custom_diploma_post_type');
+
+/**
+ * Add custom post type to main query.
+ */
+// function add_custom_post_types($query)
+// {
+//   if ($query->is_main_query()) {
+//     $query->set('post_type', array('project'));
+//   }
+//   return $query;
+// }
+// add_action('pre_get_posts', 'add_custom_post_types');
+
+/**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
  * Priority 0 to make it available to lower priority callbacks.
@@ -178,8 +254,6 @@ if (defined('JETPACK__VERSION')) {
  */
 function reverse_post_order($query)
 {
-  if (is_home() && $query->is_main_query()) {
-    $query->set('order', 'ASC');
-  }
+  $query->set('order', 'ASC');
 }
 add_action('pre_get_posts', 'reverse_post_order');

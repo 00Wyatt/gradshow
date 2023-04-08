@@ -43,6 +43,10 @@
     align-items: center;
   }
 
+  .main-navigation.toggled {
+    align-items: flex-end;
+  }
+
   .menu-item a {
     color: $black;
     font-size: $step-1;

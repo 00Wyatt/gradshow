@@ -35,60 +35,29 @@ get_header();
       <div class="developers-content">
         <div class="container">
           <div class="developer-cards">
-            <div class="developer-card">
-              <div class="developer-overlay"></div>
-              <div class="developer-name">
-                <a href="#">
-                  <p>Your Name</p>
-                </a>
+            <?php
+            $args = array(
+              'post_type' => 'developer',
+            );
+            $loop = new WP_Query($args);
+            while ($loop->have_posts()) {
+              $loop->the_post();
+            ?>
+              <div class="developer-card">
+                <div class="developer-overlay"></div>
+                <div class="developer-name">
+                  <?php the_content() ?>
+                </div>
+                <?php if (has_post_thumbnail()) {
+                  the_post_thumbnail();
+                } else { ?>
+                  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
+                <?php
+                } ?>
               </div>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
-            </div>
-            <div class="developer-card">
-              <div class="developer-overlay"></div>
-              <div class="developer-name">
-                <a href="#">
-                  <p>Your Name</p>
-                </a>
-              </div>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
-            </div>
-            <div class="developer-card">
-              <div class="developer-overlay"></div>
-              <div class="developer-name">
-                <a href="#">
-                  <p>Your Name</p>
-                </a>
-              </div>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
-            </div>
-            <div class="developer-card">
-              <div class="developer-overlay"></div>
-              <div class="developer-name">
-                <a href="#">
-                  <p>Your Name</p>
-                </a>
-              </div>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
-            </div>
-            <div class="developer-card">
-              <div class="developer-overlay"></div>
-              <div class="developer-name">
-                <a href="#">
-                  <p>Your Name</p>
-                </a>
-              </div>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
-            </div>
-            <div class="developer-card">
-              <div class="developer-overlay"></div>
-              <div class="developer-name">
-                <a href="#">
-                  <p>Your Name</p>
-                </a>
-              </div>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
-            </div>
+            <?php
+            }
+            wp_reset_query(); ?>
             <div class="developer-card">
               <div class="developer-overlay"></div>
               <div class="developer-name">

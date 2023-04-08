@@ -37,12 +37,16 @@ get_header();
           <div class="text-column">
             <div class="text-box">
               <h2>The Grad Show</h2>
-              <p>Every year, the Grad Show is hosted by TAFE which the public is invited to come and observe or try out projects created by the students of Front-web Development and Programming. Each project is carried through both groups of team members and individuals and are the result of persistence, teamwork skills and technical skills and knowledge which are highlighted when testing out these projects.</p>
-              <p>Students are told to treat their projects as if they were real life scenarios with real clients, which exemplifies their readiness to step into the real world and provide services to clients and perform in a real workplace environment. We would like to thank you for attending the Grad Show and hope you are impressed with what the students have to offer.</p>
+              <?php the_content(); ?>
             </div>
           </div><!-- .entry-content -->
           <div class="image-column">
-            <img src="https://placehold.co/680x509?text=Placeholder" alt="Placeholder image">
+            <?php if (has_post_thumbnail()) {
+              the_post_thumbnail();
+            } else { ?>
+              <img src="https://placehold.co/704x533?text=Placeholder" alt="Placeholder image">
+            <?php
+            } ?>
           </div>
         </div>
       </div>
@@ -53,6 +57,23 @@ get_header();
             <h2>NMT Diplomas</h2>
           </div>
           <div class="diplomas-cards">
+            <?php
+            $args = array(
+              'post_type' => 'diploma',
+            );
+            $loop = new WP_Query($args);
+            while ($loop->have_posts()) {
+              $loop->the_post();
+            ?>
+              <div class="card">
+                <div class="text">
+                  <h3><?php the_title() ?></h3>
+                  <?php the_content() ?>
+                </div>
+              </div>
+            <?php
+            }
+            wp_reset_query(); ?>
             <div class="card">
               <div class="text">
                 <h3>Front End Development</h3>
