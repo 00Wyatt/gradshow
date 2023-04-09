@@ -42,7 +42,7 @@ get_header();
         <?php
         the_custom_logo();
         ?>
-        <p aria-hidden="visible" class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
+        <p aria-hidden="false" class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
         <a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/svgs/logo.svg" alt="Grad Show logo"></a>
       </div><!-- .site-branding -->
       <nav id="site-navigation" class="main-navigation">
@@ -69,27 +69,9 @@ get_header();
     </div>
   </div>
 
-  <section class="projects-content">
+  <div class="projects-content">
     <div class="container">
       <div class="project-cards">
-        <?php
-        if (have_posts()) :
-          while (have_posts()) :
-            the_post();
-        ?>
-            <article id="post-<?php the_ID(); ?>" class="project-card">
-              <div class="project-overlay"></div>
-              <div class="project-name">
-                <?php
-                the_title('<h3><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h3>');
-                ?>
-              </div>
-              <img src="https://placehold.co/704x533?text=Placeholder" alt="Placeholder image">
-            </article><!-- #post-<?php the_ID(); ?> -->
-        <?php
-          endwhile; // End of the loop.
-        endif;
-        ?>
         <?php
         $args = array(
           'post_type' => 'project'
@@ -117,10 +99,9 @@ get_header();
         wp_reset_query(); ?>
       </div>
     </div>
-  </section>
+  </div>
 
 </main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();

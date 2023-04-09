@@ -33,6 +33,13 @@ $step-7: clamp(2.69rem, calc(2.47rem + 1.12vw), 3.81rem);
 /* Step 8: 51.60px → 73.10px */
 $step-8: clamp(3.23rem, calc(2.96rem + 1.34vw), 4.57rem);
 
+// Page title:
+
+/* @link https://utopia.fyi/type/calculator?c=318,9,1.2,1920,17,1.2,8,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,2xl,2xl,12 */
+
+/* Step 8: 38.70px → 73.10px */
+$page-title: clamp(2.42rem, calc(1.99rem + 2.15vw), 4.57rem);
+
 // Hero title:
 
 /* @link https://utopia.fyi/type/calculator?c=318,11,1.2,1920,40,1.2,8,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,2xl,2xl,12 */

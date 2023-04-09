@@ -16,16 +16,16 @@
   <img class="circle-1" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/footer-circle-1.svg" alt="">
   <img class="circle-2" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/footer-circle-2.svg" alt="">
   <img class="circle-3" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/footer-circle-3.svg" alt="">
-  <nav id="site-navigation" class="footer-navigation">
+  <nav id="footer-navigation" class="footer-navigation">
     <?php
     wp_nav_menu(
       array(
-        'theme_location' => 'menu-1',
-        'menu_id'        => 'primary-menu',
+        'theme_location' => 'menu-2',
+        'menu_id'        => 'secondary-menu',
       )
     );
     ?>
-  </nav><!-- #site-navigation -->
+  </nav><!-- #footer-navigation -->
   <div class="site-info">
     <p>Grad Show 2023 © All Rights Reserved</p>
   </div><!-- .site-info -->
