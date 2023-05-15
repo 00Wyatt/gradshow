@@ -8,9 +8,9 @@
  * @package GradShow
  */
 
-if (!defined('_S_VERSION')) {
+if (!defined('VERSION')) {
   // Replace the version number of the theme on each release.
-  define('_S_VERSION', '1.0.0');
+  define('VERSION', wp_get_theme()->get('Version'));
 }
 
 /**
@@ -115,8 +115,8 @@ function custom_project_post_type()
         'name'          => __('Projects', 'gradshow'),
         'singular_name' => __('Project', 'gradshow'),
       ),
-      'public'      => true,
-      'has_archive' => true,
+      'public'       => true,
+      'has_archive'  => true,
       'show_in_rest' => true,
       'supports' => array('title', 'editor', 'custom-fields', 'thumbnail')
     )
@@ -136,8 +136,8 @@ function custom_developer_post_type()
         'name'          => __('Developers', 'gradshow'),
         'singular_name' => __('Developer', 'gradshow'),
       ),
-      'public'      => true,
-      'has_archive' => true,
+      'public'       => true,
+      'has_archive'  => true,
       'show_in_rest' => true,
       'supports' => array('title', 'editor', 'custom-fields', 'thumbnail'),
       'taxonomies'  => array('category')
@@ -158,8 +158,8 @@ function custom_diploma_post_type()
         'name'          => __('Diplomas', 'gradshow'),
         'singular_name' => __('Diploma', 'gradshow'),
       ),
-      'public'      => true,
-      'has_archive' => true,
+      'public'       => true,
+      'has_archive'  => true,
       'show_in_rest' => true,
       'supports' => array('title', 'editor', 'custom-fields', 'thumbnail')
     )
@@ -168,16 +168,35 @@ function custom_diploma_post_type()
 add_action('init', 'custom_diploma_post_type');
 
 /**
- * Add custom post type to main query.
+ * Register custom taxonomy for Courses.
  */
-// function add_custom_post_types($query)
-// {
-//   if ($query->is_main_query()) {
-//     $query->set('post_type', array('project'));
-//   }
-//   return $query;
-// }
-// add_action('pre_get_posts', 'add_custom_post_types');
+function register_taxonomy_course()
+{
+  $labels = array(
+    'name'              => _x('Courses', 'taxonomy general name'),
+    'singular_name'     => _x('Course', 'taxonomy singular name'),
+    'search_items'      => __('Search Courses'),
+    'all_items'         => __('All Courses'),
+    'parent_item'       => __('Parent Course'),
+    'parent_item_colon' => __('Parent Course:'),
+    'edit_item'         => __('Edit Course'),
+    'update_item'       => __('Update Course'),
+    'add_new_item'      => __('Add New Course'),
+    'new_item_name'     => __('New Course Name'),
+    'menu_name'         => __('Courses'),
+  );
+  $args   = array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => ['slug' => 'course'],
+    'show_in_rest' => true,
+  );
+  register_taxonomy('course', ['developer'], $args);
+}
+add_action('init', 'register_taxonomy_course');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -218,10 +237,11 @@ add_action('widgets_init', 'gradshow_widgets_init');
  */
 function gradshow_scripts()
 {
-  wp_enqueue_style('gradshow-style', get_stylesheet_uri(), array(), _S_VERSION);
-  wp_enqueue_style('style', get_template_directory_uri() . '/dist/main.css', false, '1.1', 'all');
+  wp_enqueue_style('gradshow-style', get_stylesheet_uri(), array(), VERSION);
+  wp_enqueue_style('style', get_template_directory_uri() . '/dist/main.css', false, VERSION, 'all');
 
-  wp_enqueue_script('gradshow-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
+  wp_enqueue_script('gradshow-navigation', get_template_directory_uri() . '/js/navigation.js', array(), VERSION, true);
+  wp_enqueue_script('gradshow-main', get_template_directory_uri() . '/js/main.js', array(), VERSION, true);
 
   if (is_singular() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');

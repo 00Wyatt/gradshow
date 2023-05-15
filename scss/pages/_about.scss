@@ -27,6 +27,15 @@
       flex-wrap: wrap;
     }
 
+    .text-column {
+      h2 {
+        transition-delay: $staggered-lg;
+      }
+      p {
+        transition-delay: $staggered-lg;
+      }
+    }
+
     .image-column {
       img {
         border-radius: $rounded;

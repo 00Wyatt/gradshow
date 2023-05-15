@@ -21,10 +21,14 @@
   position: relative;
   background: $grey;
   color: $white;
-  padding: 48px;
+  padding: 24px 24px 48px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include breakpoint(small) {
+    padding: 48px;
+  }
 
   .circle-1 {
     @extend %footer-circle;
@@ -62,6 +66,15 @@
 
     &::after {
       background: $white;
+    }
+  }
+
+  .widget_block {
+    margin: 0;
+    padding: 48px 0 0;
+
+    ul {
+      margin: 0;
     }
   }
 

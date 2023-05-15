@@ -24,23 +24,25 @@ get_header();
   ?>
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
       <header class="entry-header about-header">
-        <img class="header-top-right" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/about-top-right.svg" alt="">
-        <img class="header-bottom-left" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/about-bottom-left.svg" alt="">
+        <img class="hide hide-static header-tr-base" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/about/about-tr-base.svg" alt="">
+        <img class="hide hide-static header-tr-color shape" data-speed="1" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/about/about-tr-color.svg" alt="">
+        <img class="hide hide-static header-bl-base" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/about/about-bl-base.svg" alt="">
+        <img class="hide hide-static header-bl-color shape" data-speed="-1" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/about/about-bl-color.svg" alt="">
         <div class="title-wrapper">
-          <img class="lines-top" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/about-lines-top.svg" alt="">
-          <img class="lines-bottom" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/about-lines-bottom.svg" alt="">
-          <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+          <img class="hide hide-right lines-top" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/about/about-lines-top.svg" alt="">
+          <img class="hide hide-left lines-bottom" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/about/about-lines-bottom.svg" alt="">
+          <?php the_title('<h1 class="hide hide-bottom entry-title">', '</h1>'); ?>
         </div>
       </header><!-- .entry-header -->
       <div class="about-content">
         <div class="container">
           <div class="text-column">
-            <div class="text-box">
-              <h2>The Grad Show</h2>
+            <div class="hide hide-left text-box">
+              <h2 class="" style="--i: 0;">The Grad Show</h2>
               <?php the_content(); ?>
             </div>
           </div><!-- .entry-content -->
-          <div class="image-column">
+          <div class="hide hide-bottom image-column">
             <?php if (has_post_thumbnail()) {
               the_post_thumbnail();
             } else { ?>
@@ -65,37 +67,18 @@ get_header();
             while ($loop->have_posts()) {
               $loop->the_post();
             ?>
-              <div class="card">
+              <div class="hide hide-bottom card" style="--i: <?php echo $loop->current_post; ?>;">
                 <div class="text">
                   <h3><?php the_title() ?></h3>
                   <?php the_content() ?>
                 </div>
+                <a class="btn btn-outline-primary" href="<?php echo get_post_meta($post->ID, 'site-link', true); ?>" target="_blank" rel="noopener noreferrer">
+                  Learn More
+                </a>
               </div>
             <?php
             }
             wp_reset_query(); ?>
-            <div class="card">
-              <div class="text">
-                <h3>Front End Development</h3>
-                <p>This course covers the whole life cycle for commercially ready websites and gives you the opportunity to work on live projects.
-                  At this level you develop skills that mean you are industry ready, from conception, liaising with clients, documentation, graphics, coding, testing to training of users.</p>
-              </div>
-              <button class="btn btn-outline-primary">Learn More</button>
-            </div>
-            <div class="card">
-              <div class="text">
-                <h3>Back End Development</h3>
-                <p>In this course you learn the whole life cycle for commercially ready websites, from conception, liaising with clients, database design, cloud application development, information architecture, big data, machine learning and web app development.</p>
-              </div>
-              <button class="btn btn-outline-primary">Learn More</button>
-            </div>
-            <div class="card">
-              <div class="text">
-                <h3>Programming</h3>
-                <p>At our Perth campus you'll gain the knowledge and skills to develop advanced Apps, Internet of Things, Big Data, database design, Cloud Applications Development, and cyber awareness.</p>
-              </div>
-              <button class="btn btn-outline-primary">Learn More</button>
-            </div>
           </div>
         </div>
       </div>

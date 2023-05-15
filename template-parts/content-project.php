@@ -15,20 +15,22 @@ use SilverStripe\Assets\Image;
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <header class="entry-header project-header">
-    <img class="header-top-right" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/project-info-top-right.svg" alt="">
-    <img class="header-bottom-left" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/project-info-bottom-left.svg" alt="">
+    <img class="hide hide-static header-tr-base" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/project-info/project-info-tr-base.svg" alt="">
+    <img class="hide hide-static header-tr-color shape" data-speed="1" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/project-info/project-info-tr-color.svg" alt="">
+    <img class="hide hide-static header-bl-base" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/project-info/project-info-bl-base.svg" alt="">
+    <img class="hide hide-static header-bl-color shape" data-speed="-1" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/project-info/project-info-bl-color.svg" alt="">
     <div class="title-wrapper">
-      <img class="lines-top" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/project-info-lines-top.svg" alt="">
-      <img class="lines-bottom" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/project-info-lines-bottom.svg" alt="">
-      <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+      <img class="hide hide-right lines-top" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/project-info/project-info-lines-top.svg" alt="">
+      <img class="hide hide-left lines-bottom" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/project-info/project-info-lines-bottom.svg" alt="">
+      <?php the_title('<h1 class="hide hide-bottom entry-title">', '</h1>'); ?>
     </div>
   </header><!-- .entry-header -->
 
   <div class="entry-content project-content">
     <div class="container">
       <div class="text-column">
-        <div class="text-box">
-          <h2>Overview</h2>
+        <div class="hide hide-left text-box">
+          <h2 class="">Overview</h2>
           <?php
           the_content(
             sprintf(
@@ -47,7 +49,7 @@ use SilverStripe\Assets\Image;
           <!-- <button class="btn btn-outline-white">Visit Site</button> -->
         </div>
       </div><!-- .entry-content -->
-      <div class="image-column">
+      <div class="hide hide-bottom image-column">
         <?php if (has_post_thumbnail()) {
           the_post_thumbnail();
         } else { ?>
@@ -72,10 +74,16 @@ use SilverStripe\Assets\Image;
         while ($loop->have_posts()) {
           $loop->the_post();
         ?>
-          <div class="developer-card">
-            <div class="developer-overlay"></div>
+          <div class="hide hide-bottom developer-card" style="--i: <?php echo $loop->current_post; ?>;">
+            <a href="<?php echo get_post_meta($post->ID, 'site-link', true); ?>" target="_blank" rel="noopener noreferrer">
+              <div class="developer-overlay"></div>
+            </a>
             <div class="developer-name">
-              <?php the_content() ?>
+              <p>
+                <a href="<?php echo get_post_meta($post->ID, 'site-link', true); ?>" target="_blank" rel="noopener noreferrer">
+                  <?php the_title() ?>
+                </a>
+              </p>
             </div>
             <?php if (has_post_thumbnail()) {
               the_post_thumbnail();
@@ -87,15 +95,6 @@ use SilverStripe\Assets\Image;
         <?php
         }
         wp_reset_query(); ?>
-        <div class="developer-card">
-          <div class="developer-overlay"></div>
-          <div class="developer-name">
-            <a href="#">
-              <p>Your Name</p>
-            </a>
-          </div>
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
-        </div>
       </div>
     </div>
 

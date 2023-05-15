@@ -24,12 +24,14 @@ get_header();
   ?>
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
       <header class="entry-header developers-header">
-        <img class="header-top-right" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/developers-top-right.svg" alt="">
-        <img class="header-bottom-left" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/developers-bottom-left.svg" alt="">
+        <img class="hide hide-static header-tr-base" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/developers/developers-tr-base.svg" alt="">
+        <img class="hide hide-static header-tr-color shape" data-speed="1" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/developers/developers-tr-color.svg" alt="">
+        <img class="hide hide-static header-bl-base" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/developers/developers-bl-base.svg" alt="">
+        <img class="hide hide-static header-bl-color shape" data-speed="-1" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/developers/developers-bl-color.svg" alt="">
         <div class="title-wrapper">
-          <img class="lines-top" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/developers-lines-top.svg" alt="">
-          <img class="lines-bottom" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/developers-lines-bottom.svg" alt="">
-          <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+          <img class="hide hide-right lines-top" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/developers/developers-lines-top.svg" alt="">
+          <img class="hide hide-left lines-bottom" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/developers/developers-lines-bottom.svg" alt="">
+          <?php the_title('<h1 class="hide hide-bottom entry-title">', '</h1>'); ?>
         </div>
       </header><!-- .entry-header -->
       <div class="developers-content">
@@ -38,15 +40,27 @@ get_header();
             <?php
             $args = array(
               'post_type' => 'developer',
+              'posts_per_page' => -1, // Show all posts
             );
             $loop = new WP_Query($args);
             while ($loop->have_posts()) {
               $loop->the_post();
             ?>
-              <div class="developer-card">
-                <div class="developer-overlay"></div>
+              <!-- <div class="hide hide-bottom developer-card" style="--i: <?php echo $loop->current_post  ?>;"> -->
+              <div class="hide hide-bottom developer-card" style="--i: <?php if ($loop->current_post > 11) {
+                                                                          echo $loop->current_post - 10;
+                                                                        } else {
+                                                                          echo $loop->current_post;
+                                                                        } ?>;">
+                <a href="<?php echo get_post_meta($post->ID, 'site-link', true); ?>" target="_blank" rel="noopener noreferrer">
+                  <div class="developer-overlay"></div>
+                </a>
                 <div class="developer-name">
-                  <?php the_content() ?>
+                  <p>
+                    <a href="<?php echo get_post_meta($post->ID, 'site-link', true); ?>" target="_blank" rel="noopener noreferrer">
+                      <?php the_title() ?>
+                    </a>
+                  </p>
                 </div>
                 <?php if (has_post_thumbnail()) {
                   the_post_thumbnail();
@@ -58,60 +72,6 @@ get_header();
             <?php
             }
             wp_reset_query(); ?>
-            <div class="developer-card">
-              <div class="developer-overlay"></div>
-              <div class="developer-name">
-                <a href="#">
-                  <p>Your Name</p>
-                </a>
-              </div>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
-            </div>
-            <div class="developer-card">
-              <div class="developer-overlay"></div>
-              <div class="developer-name">
-                <a href="#">
-                  <p>Your Name</p>
-                </a>
-              </div>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
-            </div>
-            <div class="developer-card">
-              <div class="developer-overlay"></div>
-              <div class="developer-name">
-                <a href="#">
-                  <p>Your Name</p>
-                </a>
-              </div>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
-            </div>
-            <div class="developer-card">
-              <div class="developer-overlay"></div>
-              <div class="developer-name">
-                <a href="#">
-                  <p>Your Name</p>
-                </a>
-              </div>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
-            </div>
-            <div class="developer-card">
-              <div class="developer-overlay"></div>
-              <div class="developer-name">
-                <a href="#">
-                  <p>Your Name</p>
-                </a>
-              </div>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
-            </div>
-            <div class="developer-card">
-              <div class="developer-overlay"></div>
-              <div class="developer-name">
-                <a href="#">
-                  <p>Your Name</p>
-                </a>
-              </div>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
-            </div>
           </div>
         </div>
       </div>

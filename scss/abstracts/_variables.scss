@@ -7,6 +7,8 @@ $rounded: 8px;
 
 // Delay:
 $delay-sm: 200ms;
+$staggered: calc((var(--i) + 2) * 150ms);
+$staggered-lg: calc((var(--i) + 2) * 250ms);
 
 // Colors:
 

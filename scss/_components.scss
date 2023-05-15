@@ -6,10 +6,20 @@
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 24px;
+  gap: 8px;
+
+  @include breakpoint(small) {
+    gap: 16px;
+  }
+
+  @include breakpoint(medium) {
+    gap: 24px;
+  }
 
   .menu-item {
     list-style: none;
+    display: flex;
+    justify-content: flex-end;
 
     a {
       position: relative;
@@ -36,27 +46,6 @@
   }
 }
 
-.menu-toggle {
-  background: transparent;
-  border: 2px solid $black;
-  padding: 4px 8px;
-  cursor: pointer;
-  transition: background-color $delay-sm ease-in-out;
-
-  &:hover {
-    background: rgb(0, 0, 0, 0.1);
-  }
-
-  img {
-    display: flex;
-  }
-}
-
-.toggled {
-  flex-direction: column;
-  text-align: end;
-}
-
 .entry-header {
   background: $white;
   padding: 40px 0;
@@ -64,6 +53,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   @include breakpoint(medium) {
     padding: 56px 0;
@@ -167,6 +157,10 @@
     box-shadow: $shadow-md;
     overflow: hidden;
 
+    @include breakpoint(large) {
+      transition-delay: $staggered;
+    }
+
     &:hover .project-overlay {
       opacity: 0.2;
     }
@@ -225,6 +219,7 @@
 
   .developer-card {
     background: $primary-gradient;
+    min-height: 360px;
     padding: 8px;
     position: relative;
     border-radius: $rounded;
@@ -232,6 +227,10 @@
     display: flex;
     box-shadow: $shadow-sm;
     overflow: hidden;
+
+    @include breakpoint(large) {
+      transition-delay: $staggered;
+    }
 
     &:hover {
       .developer-overlay {
@@ -277,6 +276,10 @@
         text-align: center;
         text-transform: uppercase;
       }
+
+      @media all and (max-width: 899px) {
+        transform: translateY(0);
+      }
     }
 
     img {
@@ -306,12 +309,20 @@
     gap: 16px;
     box-shadow: $shadow-sm;
 
+    @include breakpoint(small) {
+      transition-delay: $staggered;
+    }
+
     h3 {
       font-size: $step-2;
     }
 
     p {
       font-size: $step-1;
+    }
+
+    a {
+      line-height: 1.1;
     }
   }
 }
@@ -348,51 +359,45 @@
   align-items: center;
 }
 
-//////// Design Elements ////////
+//////// Animations ////////
 
-%header-element {
-  position: absolute;
-  width: 20%;
-
-  @include breakpoint(small) {
-    width: 18%;
-  }
-
-  @include breakpoint(medium) {
-    width: 15%;
-  }
-
-  @include breakpoint(large) {
-    width: 12%;
-  }
-
-  @include breakpoint(xlarge) {
-    width: 9%;
+%transition-all {
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform 1.3s, opacity 1.3s;
   }
 }
 
-.header-top-right {
-  @extend %header-element;
-  top: 0;
-  right: 0;
-}
+.hide {
+  opacity: 0;
 
-.header-bottom-left {
-  @extend %header-element;
-  bottom: 0;
-  left: 0;
-}
-
-.title-wrapper {
-  position: relative;
-
-  .lines-top {
-    position: absolute;
-    right: 0;
+  &-bottom {
+    @extend %transition-all;
+    transform: translateY(30%);
+    transition-delay: 400ms;
   }
 
-  .lines-bottom {
-    position: absolute;
-    left: 0;
+  &-left {
+    @extend %transition-all;
+    transform: translateX(-30%);
+    transition-delay: 400ms;
   }
+
+  &-right {
+    @extend %transition-all;
+    transform: translateX(30%);
+    transition-delay: 400ms;
+  }
+
+  &-static {
+    @media (prefers-reduced-motion: no-preference) {
+      transition: opacity 1.3s;
+      transition-delay: 200ms;
+    }
+  }
+}
+
+.show {
+  opacity: 1;
+  transform: translateX(0);
+  transform: translateY(0);
 }

@@ -13,10 +13,10 @@
 ?>
 
 <footer id="colophon" class="site-footer">
-  <img class="circle-1" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/footer-circle-1.svg" alt="">
-  <img class="circle-2" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/footer-circle-2.svg" alt="">
-  <img class="circle-3" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/footer-circle-3.svg" alt="">
-  <nav id="footer-navigation" class="footer-navigation">
+  <img class="hide hide-static circle-1" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/footer/footer-circle-1.svg" alt="">
+  <img class="hide hide-static circle-2" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/footer/footer-circle-2.svg" alt="">
+  <img class="hide hide-static circle-3" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/footer/footer-circle-3.svg" alt="">
+  <nav id="footer-navigation" class="hide hide-bottom footer-navigation">
     <?php
     wp_nav_menu(
       array(
@@ -26,7 +26,12 @@
     );
     ?>
   </nav><!-- #footer-navigation -->
-  <div class="site-info">
+
+  <div class="hide hide-bottom">
+    <?php if (dynamic_sidebar('sidebar-1')) : else : endif; ?>
+  </div>
+
+  <div class="hide hide-static site-info">
     <p>Grad Show 2023 © All Rights Reserved</p>
   </div><!-- .site-info -->
 </footer><!-- #colophon -->

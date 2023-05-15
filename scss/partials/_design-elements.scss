@@ -1,0 +1,240 @@
+@use '../abstracts' as *;
+
+%hero-element {
+  position: absolute;
+  width: 90%;
+
+  @include breakpoint(small) {
+    width: 80%;
+  }
+
+  @include breakpoint(medium) {
+    width: 55%;
+  }
+
+  @include breakpoint(large) {
+    width: 45%;
+  }
+
+  @include breakpoint(xlarge) {
+    width: 35%;
+  }
+}
+
+%header-element {
+  position: absolute;
+  width: 20%;
+
+  @include breakpoint(small) {
+    width: 18%;
+  }
+
+  @include breakpoint(medium) {
+    width: 15%;
+  }
+
+  @include breakpoint(large) {
+    width: 12%;
+  }
+
+  @include breakpoint(xlarge) {
+    width: 9%;
+  }
+}
+
+@mixin animate {
+  @media all and (max-width: 900px) {
+    animation: circle 3s linear infinite;
+  }
+}
+
+@keyframes circle {
+  0% {
+    transform: rotate(0deg) translate(-2px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translate(-2px) rotate(-360deg);
+  }
+}
+
+.main-hero {
+  .top-left-base {
+    @extend %hero-element;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .top-right-base {
+    @extend %hero-element;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    display: none;
+
+    @include breakpoint(medium) {
+      display: block;
+    }
+  }
+
+  .bottom-left-base {
+    @extend %hero-element;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+
+    @include breakpoint(medium) {
+      display: block;
+    }
+  }
+
+  .bottom-right-base {
+    @extend %hero-element;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  .top-left-circles {
+    @extend %hero-element;
+    @include animate;
+    top: -8%;
+    left: -13%;
+
+    @include breakpoint(medium) {
+      left: -9%;
+    }
+
+    @include breakpoint(large) {
+      left: -7%;
+    }
+
+    @include breakpoint(xlarge) {
+      top: -10%;
+      left: -5%;
+    }
+  }
+
+  .top-left-lines {
+    @extend %hero-element;
+    @include animate;
+    top: -6%;
+    left: -4%;
+
+    @include breakpoint(medium) {
+      top: -7%;
+    }
+  }
+
+  .top-right-lines {
+    @extend %hero-element;
+    @include animate;
+    top: -27%;
+    right: -10%;
+    display: none;
+
+    @include breakpoint(medium) {
+      display: block;
+      top: -20%;
+      right: -23%;
+    }
+
+    @include breakpoint(large) {
+      top: -22%;
+      right: -15%;
+    }
+
+    @include breakpoint(xlarge) {
+      top: -27%;
+      right: -12%;
+    }
+  }
+
+  .bottom-left-lines {
+    @extend %hero-element;
+    @include animate;
+    display: none;
+
+    @include breakpoint(medium) {
+      display: block;
+      bottom: -18%;
+      left: -18%;
+    }
+
+    @include breakpoint(large) {
+      bottom: -20%;
+      left: -13%;
+    }
+
+    @include breakpoint(xlarge) {
+      bottom: -25%;
+      left: -9%;
+    }
+  }
+
+  .bottom-right-circles {
+    @extend %hero-element;
+    @include animate;
+    bottom: -10%;
+    right: -6%;
+
+    @include breakpoint(medium) {
+      bottom: -9%;
+      right: -4%;
+    }
+  }
+
+  .bottom-right-lines {
+    @extend %hero-element;
+    @include animate;
+    bottom: -10%;
+    right: -5%;
+
+    @include breakpoint(medium) {
+      right: -3%;
+    }
+  }
+}
+
+.entry-header {
+  .header-tr-base {
+    @extend %header-element;
+    top: -7%;
+    right: -2%;
+  }
+
+  .header-bl-base {
+    @extend %header-element;
+    bottom: -3%;
+    left: -2%;
+  }
+
+  .header-tr-color {
+    @extend %header-element;
+    @include animate;
+    top: -12%;
+    right: -2%;
+  }
+
+  .header-bl-color {
+    @extend %header-element;
+    @include animate;
+    bottom: -8%;
+    left: -3%;
+  }
+}
+
+.title-wrapper {
+  position: relative;
+
+  .lines-top {
+    position: absolute;
+    right: 0;
+  }
+
+  .lines-bottom {
+    position: absolute;
+    left: 0;
+  }
+}

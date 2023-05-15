@@ -19,7 +19,7 @@ get_header();
     get_template_part('template-parts/content', get_post_type());
 
   ?>
-    <div class="container">
+    <div class="hide hide-static container">
       <?php
       the_post_navigation(
         array(
@@ -37,5 +37,5 @@ get_header();
 </main><!-- #main -->
 
 <?php
-get_sidebar();
+
 get_footer();
