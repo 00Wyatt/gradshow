@@ -1,18 +1,3 @@
-<?php
-
-use SilverStripe\Assets\Image;
-
-
-/**
- * Template part for displaying posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package GradShow
- */
-
-?>
-
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <header class="entry-header project-header">
     <img class="hide hide-static header-tr-base" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/project-info/project-info-tr-base.svg" alt="">
@@ -31,24 +16,19 @@ use SilverStripe\Assets\Image;
       <div class="text-column">
         <div class="hide hide-left text-box">
           <h2 class="">Overview</h2>
-          <?php
-          the_content(
-            sprintf(
-              wp_kses(
-                /* translators: %s: Name of current post. Only visible to screen readers */
-                __('Continue reading<span class="screen-reader-text"> "%s"</span>', 'gradshow'),
-                array(
-                  'span' => array(
-                    'class' => array(),
-                  ),
-                )
-              ),
-              wp_kses_post(get_the_title())
-            )
-          ); ?>
-          <!-- <button class="btn btn-outline-white">Visit Site</button> -->
+          <?php the_content(); ?>
+          <div class="site-links">
+            <?php $site_link = get_post_meta($post->ID, 'site-link', true);
+            if (!empty($site_link))
+              echo '<a class="btn btn-outline-white" href="' . $site_link . '" target="_blank" rel="noopener noreferrer">Visit Site</a>';
+            $repo_link = get_post_meta($post->ID, 'repo-link', true);
+            if (!empty($repo_link))
+              echo '<a class="btn btn-outline-white" href="' . $repo_link . '" target="_blank" rel="noopener noreferrer">View Code</a>';
+            ?>
+            <a class="btn btn-filled" href="<?php echo esc_url(home_url('/')); ?>#projects">All Projects</a>
+          </div>
         </div>
-      </div><!-- .entry-content -->
+      </div>
       <div class="hide hide-bottom image-column">
         <?php if (has_post_thumbnail()) {
           the_post_thumbnail();
@@ -62,7 +42,7 @@ use SilverStripe\Assets\Image;
   <div class="team-content">
     <div class="container">
       <div class="heading">
-        <h2>The Team</h2>
+        <h2 class="hide hide-bottom">The Team</h2>
       </div>
       <div class="developer-cards">
         <?php
@@ -97,14 +77,5 @@ use SilverStripe\Assets\Image;
         wp_reset_query(); ?>
       </div>
     </div>
-
-    <?php
-    wp_link_pages(
-      array(
-        'before' => '<div class="page-links">' . esc_html__('Pages:', 'gradshow'),
-        'after'  => '</div>',
-      )
-    );
-    ?>
   </div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->

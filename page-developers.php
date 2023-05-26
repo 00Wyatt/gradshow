@@ -1,18 +1,4 @@
 <?php
-
-/**
- * The template for displaying all pages
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package GradShow
- */
-
 get_header();
 ?>
 
@@ -36,22 +22,49 @@ get_header();
       </header><!-- .entry-header -->
       <div class="developers-content">
         <div class="container">
+          <form method="GET" class="hide hide-bottom developers-filter">
+            <!-- <h2>Filter:</h2> -->
+            <?php
+            $terms = get_terms([
+              'taxonomy' => 'course',
+              'hide_empty' => false,
+              "orderby" => "term_group"
+            ]);
+            foreach ($terms as $term) : ?>
+              <label>
+                <input type="checkbox" name="course[]" value="<?php echo $term->slug; ?>" <?php checked((isset($_GET['course']) && in_array($term->slug, $_GET['course']))) ?> />
+                <?php echo $term->name; ?>
+              </label>
+            <?php endforeach; ?>
+            <button class="btn btn-outline-white" type="submit">Filter</button>
+          </form>
+        </div>
+        <div class="container">
           <div class="developer-cards">
             <?php
             $args = array(
               'post_type' => 'developer',
               'posts_per_page' => -1, // Show all posts
             );
+            if (isset($_GET['course']))
+              $course_filter = $_GET['course'];
+            if (!empty($course_filter)) {
+              foreach ($course_filter as &$the_course)
+                $the_course = htmlspecialchars($the_course);
+              unset($the_course);
+              $tax_query[] = array(
+                'taxonomy' => 'course',
+                'field' => 'slug',
+                'terms' => $course_filter,
+              );
+              $args['tax_query'] = $tax_query;
+            }
             $loop = new WP_Query($args);
             while ($loop->have_posts()) {
               $loop->the_post();
             ?>
               <!-- <div class="hide hide-bottom developer-card" style="--i: <?php echo $loop->current_post  ?>;"> -->
-              <div class="hide hide-bottom developer-card" style="--i: <?php if ($loop->current_post > 11) {
-                                                                          echo $loop->current_post - 10;
-                                                                        } else {
-                                                                          echo $loop->current_post;
-                                                                        } ?>;">
+              <div class="hide hide-bottom developer-card" style="--i: 1;">
                 <a href="<?php echo get_post_meta($post->ID, 'site-link', true); ?>" target="_blank" rel="noopener noreferrer">
                   <div class="developer-overlay"></div>
                 </a>

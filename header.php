@@ -1,16 +1,3 @@
-<?php
-
-/**
- * The header for our theme
- *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package GradShow
- */
-
-?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
 
@@ -26,6 +13,7 @@
   <?php wp_body_open(); ?>
   <div id="page" class="site parallax">
     <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'gradshow'); ?></a>
+    <button id="scrollBtn" class="scroll-button" title="Go to top"><img class="" src="<?php echo get_template_directory_uri(); ?>/assets/svgs/arrow-fat-up.svg" alt=""></button>
     <?php
     if (!is_front_page() && !is_home()) :
     ?>

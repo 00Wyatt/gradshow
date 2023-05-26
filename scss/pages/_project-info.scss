@@ -7,13 +7,13 @@
     .lines-top {
       top: 5%;
       width: 19%;
-      min-width: 75px;
+      min-width: 88px;
     }
 
     .lines-bottom {
       bottom: 0;
       width: 20%;
-      min-width: 75px;
+      min-width: 88px;
     }
   }
 
@@ -29,36 +29,56 @@
       flex-wrap: wrap;
     }
 
-    .image-column {
-      .images {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        border-radius: $rounded;
-        box-shadow: $shadow-md;
-        overflow: hidden;
-      }
-
-      .image-wrapper {
-        position: relative;
-        display: flex;
-        cursor: pointer;
-
-        &:hover .image-overlay {
-          opacity: 0.2;
+    .text-column {
+      .prototype-image {
+        img {
+          border-radius: $rounded;
+          box-shadow: $shadow-md;
         }
       }
 
-      .image-overlay {
-        background: #000000;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-        transition: opacity $delay-sm ease-in-out;
+      .prototype-link:hover {
+        opacity: 0.8;
       }
 
+      .wp-element-caption {
+        text-align: center;
+        font-weight: 600;
+
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .site-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+
+        a {
+          line-height: 1.1;
+        }
+
+        .btn-filled {
+          background: $black;
+          color: $white;
+          border: 4px solid $black;
+
+          &:hover {
+            opacity: 0.8;
+            color: $white;
+          }
+        }
+      }
+
+      // Reset WP class margin
+      .wp-block-columns {
+        margin: 0;
+      }
+    }
+
+    .image-column {
       .wp-post-image,
       .placeholder-image {
         border-radius: $rounded;
@@ -122,6 +142,10 @@
         position: relative;
         display: flex;
         align-items: center;
+
+        &:hover {
+          text-decoration: underline;
+        }
 
         img {
           position: absolute;

@@ -72,13 +72,22 @@ a:active {
 
 .parallax {
   position: relative;
-  /* The image used */
-  background-image: url('../assets/images/background.png');
-
-  /* Full height */
+  background-image: url('../assets/images/background-sm.png');
   height: 100%;
 
-  /* Create the parallax scrolling effect */
+  @include breakpoint(medium) {
+    background-image: url('../assets/images/background-md.png');
+  }
+
+  @include breakpoint(xlarge) {
+    background-image: url('../assets/images/background-lg.png');
+  }
+
+  @include breakpoint(xxlarge) {
+    background-image: url('../assets/images/background-xlg.png');
+  }
+
+  // Create the parallax scrolling effect:
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
