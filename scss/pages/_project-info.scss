@@ -3,17 +3,46 @@
 .project-info {
   .project-header {
     position: relative;
+    text-align: center;
+
+    @media all and (max-width: 699px) {
+      line-height: 1.2;
+    }
+
+    h1 {
+      margin: 16px 0;
+
+      @include breakpoint(small) {
+        margin: 32px 0;
+      }
+
+      @include breakpoint(medium) {
+        margin: 0;
+      }
+    }
 
     .lines-top {
+      display: none;
       top: 5%;
       width: 19%;
       min-width: 88px;
+      max-width: 128px;
+
+      @include breakpoint(medium) {
+        display: block;
+      }
     }
 
     .lines-bottom {
+      display: none;
       bottom: 0;
       width: 20%;
       min-width: 88px;
+      max-width: 128px;
+
+      @include breakpoint(medium) {
+        display: block;
+      }
     }
   }
 

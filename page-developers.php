@@ -28,7 +28,7 @@ get_header();
             $terms = get_terms([
               'taxonomy' => 'course',
               'hide_empty' => false,
-              "orderby" => "term_group"
+              'orderby' => 'id'
             ]);
             foreach ($terms as $term) : ?>
               <label>
