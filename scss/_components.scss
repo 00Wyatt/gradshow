@@ -181,7 +181,6 @@
 
     img {
       width: 100%;
-      // object-fit: cover;
     }
   }
 
@@ -200,6 +199,7 @@
   .project-name {
     background: $primary-gradient;
     position: absolute;
+    max-width: 248px;
     right: 0px;
     bottom: 24px;
     padding: 8px 16px;
@@ -207,6 +207,7 @@
     display: flex;
 
     @include breakpoint(small) {
+      max-width: unset;
       bottom: 32px;
       padding: 16px 32px;
     }
@@ -382,6 +383,7 @@
 %transition-all {
   @media (prefers-reduced-motion: no-preference) {
     transition: transform 1.3s, opacity 1.3s;
+    transition-delay: 400ms;
   }
 }
 
@@ -391,19 +393,16 @@
   &-bottom {
     @extend %transition-all;
     transform: translateY(30%);
-    transition-delay: 400ms;
   }
 
   &-left {
     @extend %transition-all;
     transform: translateX(-30%);
-    transition-delay: 400ms;
   }
 
   &-right {
     @extend %transition-all;
     transform: translateX(30%);
-    transition-delay: 400ms;
   }
 
   &-static {

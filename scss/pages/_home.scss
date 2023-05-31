@@ -76,7 +76,9 @@
     }
 
     .down-arrow {
-      animation: slide 2s ease-in-out infinite;
+      @media screen and (prefers-reduced-motion: no-preference) {
+        animation: slide 2s ease-in-out infinite;
+      }
     }
 
     @keyframes slide {

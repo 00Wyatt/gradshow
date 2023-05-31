@@ -76,7 +76,9 @@ get_header();
       <div class="project-cards">
         <?php
         $args = array(
-          'post_type' => 'project'
+          'post_type' => 'project',
+          'orderby' => 'title',
+          'order'   => 'DESC',
         );
         $loop = new WP_Query($args);
         while ($loop->have_posts()) {

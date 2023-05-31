@@ -1,12 +1,12 @@
 # Grad Show
-This is a WordPress theme currently in development at North Metropolitan TAFE. The project is for showcasing the work of graduating students in Semester 1 of 2023.
+This is a WordPress theme developed at North Metropolitan TAFE. The project is for showcasing the work of graduating students in Semester 1 of 2023.
 
 ## Overview
-As a team, we are designing and developing a WordPress website to showcase the work of graduating students from North Metropolitan TAFE in Semester 1 of 2023. The Grad Show website aims to provide a platform for students to showcase their work and connect with potential employers and industry professionals.
+As a team, we have designed and developed a WordPress website to showcase the work of graduating students from North Metropolitan TAFE in Semester 1 of 2023. The Grad Show website aims to provide a platform for students to showcase their work and connect with potential employers and industry professionals.
 
-Using Figma, we are designing a visually appealing and user-friendly interface that highlights the students' diverse talents and skills. We are also utilizing WordPress to provide a flexible and scalable platform for managing and updating the website's content.
+Using Figma, we designed a visually appealing and user-friendly interface that highlights the students' diverse talents and skills. We are now utilizing WordPress to provide a flexible and scalable platform for managing and updating the website's content.
 
-We are committed to delivering a high-quality website that effectively represents the graduating students and helps them launch their careers
+We are committed to delivering a high-quality website that effectively represents the graduating students and helps them launch their careers.
 
 ## Functionality:
 This theme is designed to be used at the Grad Show to showcase diploma students and their projects that they have completed at TAFE.

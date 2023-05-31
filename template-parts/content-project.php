@@ -49,6 +49,8 @@
         $args = array(
           'category_name' => get_the_title(),
           'post_type' => 'developer',
+          'orderby' => 'title',
+          'order'   => 'DESC',
         );
         $loop = new WP_Query($args);
         while ($loop->have_posts()) {

@@ -45,6 +45,8 @@ get_header();
             $args = array(
               'post_type' => 'developer',
               'posts_per_page' => -1, // Show all posts
+              'orderby' => 'title',
+              'order'   => 'DESC',
             );
             if (isset($_GET['course']))
               $course_filter = $_GET['course'];
