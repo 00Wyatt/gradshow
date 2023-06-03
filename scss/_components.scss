@@ -172,7 +172,9 @@
     overflow: hidden;
 
     @include breakpoint(large) {
-      transition-delay: $staggered;
+      @media screen and (prefers-reduced-motion: no-preference) {
+        transition-delay: $staggered;
+      }
     }
 
     &:hover .project-overlay {
@@ -244,7 +246,9 @@
     overflow: hidden;
 
     @include breakpoint(large) {
-      transition-delay: $staggered;
+      @media screen and (prefers-reduced-motion: no-preference) {
+        transition-delay: $staggered;
+      }
     }
 
     &:hover {
@@ -325,7 +329,9 @@
     box-shadow: $shadow-sm;
 
     @include breakpoint(small) {
-      transition-delay: $staggered;
+      @media screen and (prefers-reduced-motion: no-preference) {
+        transition-delay: $staggered;
+      }
     }
 
     h3 {
@@ -436,7 +442,9 @@
   cursor: pointer;
   opacity: 0;
   transform: translateX(-100px);
-  transition: all $delay-sm ease-in-out;
+  @media screen and (prefers-reduced-motion: no-preference) {
+    transition: all $delay-sm ease-in-out;
+  }
 
   img {
     width: 24px;

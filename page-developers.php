@@ -61,6 +61,7 @@ get_header();
               );
               $args['tax_query'] = $tax_query;
             }
+            $bg_colors = ["hsl(196, 61%, 49%)", "hsl(175, 65%, 50%)", "hsl(359, 94%, 75%)", "hsl(339, 74%, 88%)"];
             $loop = new WP_Query($args);
             while ($loop->have_posts()) {
               $loop->the_post();
@@ -77,10 +78,12 @@ get_header();
                     </a>
                   </p>
                 </div>
-                <?php if (has_post_thumbnail()) {
-                  the_post_thumbnail();
+                <?php
+                $bg_style = 'background-color:' . $bg_colors[$loop->current_post % 4] . ';';
+                if (has_post_thumbnail()) {
+                  the_post_thumbnail('', array('style' => $bg_style));
                 } else { ?>
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot">
+                  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dev-placeholder.png" alt="Placeholder image for developer headshot" style="<?php echo $bg_style ?>">
                 <?php
                 } ?>
               </div>
