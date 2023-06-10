@@ -66,7 +66,6 @@ get_header();
             while ($loop->have_posts()) {
               $loop->the_post();
             ?>
-              <!-- <div class="hide hide-bottom developer-card" style="--i: <?php echo $loop->current_post  ?>;"> -->
               <div class="hide hide-bottom developer-card" style="--i: 1;">
                 <a href="<?php echo get_post_meta($post->ID, 'site-link', true); ?>" target="_blank" rel="noopener noreferrer">
                   <div class="developer-overlay"></div>
